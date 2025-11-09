@@ -15,3 +15,8 @@ Installion: [GithubCommentTabToCommitButton.user.js](https://github.com/muescha/
 add the length of the Video into the title. not very perfect. but works in most cases.
 
 Installion: [YoutubeLengthTitle.user.js](https://github.com/muescha/UserScriptsAndStyleScripts/raw/master/userscripts/YoutubeLengthTitle.user.js)
+
+
+# Development
+
+run the [userscript_update_server](updateserver/userscript_update_server.py)
