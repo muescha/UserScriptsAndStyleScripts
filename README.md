@@ -1,6 +1,11 @@
 # UserScriptsAndStyleScripts
 a list of my userscripts and style scripts
 
+# UserStyles
+
+Installation: [ebay-print-messages.user.css](https://raw.githubusercontent.com/muescha/UserScriptsAndStyleScripts/master/userstyles/ebay-print-messages.user.css)
+
+Only for conversations with sellers. Messages from ebay direct are in an iframe can not be printed. 
 
 # GithubCommentTabToCommitButton
 

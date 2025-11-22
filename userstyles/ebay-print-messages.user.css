@@ -1,0 +1,120 @@
+/* ==UserStyle==
+@name           www.ebay.de/cnt/ViewMessage
+@namespace      github.com/openstyles/stylus
+@version        1.5.0
+@description    eBay print messages
+@author         Muescha
+
+@homepageURL    https://github.com/muescha/UserScriptsAndStyleScripts
+@supportURL     https://github.com/muescha/UserScriptsAndStyleScripts/issues
+@updateURL      https://raw.githubusercontent.com/muescha/UserScriptsAndStyleScripts/master/userstyles/ebay-print-messages.user.css
+@downloadURL    https://raw.githubusercontent.com/muescha/UserScriptsAndStyleScripts/master/userstyles/ebay-print-messages.user.css
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www.ebay.de/cnt/ViewMessage?_caprdt=1&group_type=CORE") {
+
+    @media print {
+
+        /* 1) Linke Inbox ausblenden */
+        .msg-inbox-container {
+            display: none !important;
+        }
+
+        /* 2) Gesamtlayout: keine Viewport-Höhen/Scrollbars */
+        html,
+        body,
+        body.viewmessage,
+        body.messaging {
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        .main-content,
+        .app-shell,
+        .app-river__center,
+        .msg-container,
+        .msg-container--narrow,
+        .msg-content-view-wrapper,
+        .msg-content-view,
+        .msg-content-view--active {
+            height: auto !important;
+            max-height: none !important;
+            min-height: 0 !important;
+            overflow: visible !important;
+
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+        }
+
+        /* 3) “Inverse Scroll” komplett deaktivieren
+              und stattdessen flex column-reverse benutzen */
+
+        /* äußere Scroll-Wrapper: normal flow statt absolute */
+        .app-infinite-scroll__outer-container,
+        .app-infinite-scroll__outer-container__inverse {
+            position: static !important;
+            top: auto !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+            transform: none !important;
+            direction: ltr !important;
+        }
+
+        /* eigentlicher Nachrichten-Stack */
+        .app-infinite-scroll,
+        .app-conversations__wrapper,
+        .app-conversations__topcontainer,
+        .app-conversations__subcontainer {
+            display: flex !important;
+            flex-direction: column-reverse !important; /* DOM: neu->alt, Anzeige: alt->neu */
+            align-items: stretch !important;
+
+            height: auto !important;
+            max-height: none !important;
+            min-height: 0 !important;
+            overflow: visible !important;
+
+            transform: none !important;
+            direction: ltr !important;
+        }
+
+        /* einzelne Konversationen wieder “normal” */
+        .app-conversation {
+            transform: none !important;
+            direction: ltr !important;
+        }
+
+        /* 4) Inputleiste & Kopf-/Fußleisten ausblenden */
+        .imageupload,
+        .imageupload__send-btn-wrapper,
+        .app-conversations__legal__info,
+        .msg-conversation-head-wrapper,
+        header,
+        .globalheader-wrapper,
+        footer {
+            display: none !important;
+        }
+
+
+        /* Desktop-Chat im Print erzwingen – egal, was Mobile-CSS macht */
+        .msg-content-view,
+        .msg-content-view--active {
+            display: flex !important;
+            flex-direction: column !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .msg-content-view--active *,
+        .msg-content-view * {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    }
+}
